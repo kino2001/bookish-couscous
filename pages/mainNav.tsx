@@ -55,21 +55,21 @@ function Nav(){
     let menuRef= useRef(null);
     let respNav= useRef(null);
     useEffect (()=>{
-        let handler=(e: any)=> {
-            if (!menuRef.current.contains(e.target)){
-                setIsVisible(false);
-                setCartVisible (false);
-                setCartSummery (false);
+        // let handler=(e: any)=> {
+        //     if (!menuRef.current.contains(e.target)){
+        //         setIsVisible(false);
+        //         setCartVisible (false);
+        //         setCartSummery (false);
                 
-            }
+        //     }
             // if (!respNav.current.contains(e.target)){
             //     setrespNavHidden(false);
             // }
-        };
-        document.addEventListener("click",handler);
-        return () => {
-            document.removeEventListener("click",handler);
-        }
+        // };
+        // document.addEventListener("click",handler);
+        // return () => {
+        //     document.removeEventListener("click",handler);
+        // }
     })
     return (
         <div>

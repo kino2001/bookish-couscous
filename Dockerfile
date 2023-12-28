@@ -1,4 +1,4 @@
-FROM node:18-alpine as builder
+FROM node:20-alpine as builder
 
 RUN mkdir -p /usr/src/nextjs-test
 
@@ -18,7 +18,7 @@ ENV NODE_ENV production
 
 RUN rm -rf /usr/share/nginx/html/*
 
-COPY --from=builder /usr/src/nextjs-test/.next/server/app /usr/share/nginx/html
+COPY --from=builder /usr/src/nextjs-test/.next /usr/share/nginx/html
 
 COPY nginx.conf /etc/nginx/conf.d/default.conf
 
