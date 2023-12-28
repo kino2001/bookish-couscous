@@ -1,0 +1,184 @@
+.footerSearch {
+    width: 100%;
+    height: 200px;
+    background-color: #57b568;
+    background-image: url("/electronics_pattern.png");
+    margin-top: 200px;
+    padding-top: 50px;
+    text-align: center;
+    color: #fff;
+}
+.navSearch {
+    /* width: 30%; */
+    height: 45px;
+    padding-left: 25px;
+    font-size: 15px;
+    border: 1px solid white;
+    background-color: #fff;
+    margin: 20px auto;
+}
+.navSearch button {
+    background-color: #57b568;
+    width: 40px;
+    height: 40px;
+    margin:auto 2px;
+    color: #fff;
+}
+.navSearch input {
+    color:#80807f;
+    width: 100%;
+}
+.navSearch input:focus {
+    border:0;
+    outline: none;
+}
+.searchIcon {
+    margin:auto;
+    width:25px;
+    height: 25px;
+}
+.footerSearch h1 {
+    font-size: 25px;
+}
+.footerLinksContainer {
+    width: 100%;
+    background-color: #eee;
+    border-bottom: 1px solid rgba(214, 214, 214, 0.329);
+    padding-top: 80px;
+}
+.footerLinks {
+    width: 75%;
+    margin-bottom: 50px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.footerLinks h1 {
+    color: rgba(71, 70, 70, 0.956);
+}
+.footerLinks ul li {
+    color: rgba(71, 70, 70, 0.576);
+    padding-top: 10px;
+    font-size: 15px;
+}
+.footerLinks div {
+    margin-bottom: 15px;
+}
+.arrow {
+    float: left;
+    font-size: 17px;
+    padding-top: 5px;
+    color: rgba(71, 70, 70, 0.576);
+    margin-right: 10px;
+}
+.footerLinks ul li:hover {
+    color: #57b568;
+    .arrow {
+        padding-left: 7px;
+    }
+}
+.links:hover {
+    color: darkblue;
+    text-decoration: underline;
+}
+.socialLinks {
+    padding-top: 10px;
+    display: block;
+}
+.socialLinks li{
+    background-color: #57b568;
+    width: 40px;
+    height: 40px;
+    float: left;
+    margin-right: 5px;
+}
+
+.socialMedia {
+    color: white;
+    width: 20px;
+    height: 20px;
+    margin-left: 10px;
+}
+.socialLinks li {
+    background: linear-gradient(#57b568, #57b568 50%, #fff 50%, #fff);
+    background-size: 100% 200%;
+    transition: background 0.5s;
+}
+
+.socialLinks li:hover {
+    background-position: -100% -100%;
+    .socialMedia {
+        color:#57b568;
+    }
+}
+.signalRotate {
+    color: white;
+    width: 35px;
+    height: 35px;
+    margin-left: 3px;
+    margin-top: -6px;
+    rotate: 45deg;
+}
+.signalRotate:hover {
+    color:#57b568;
+}
+.copyRightContainer{
+    width: 100%;
+    background-color: #eee;
+}
+.copyRight {
+    width:70%;
+    color: #888;
+    font-size: 15px;
+    padding-top: 20px;
+}
+.copyRightLinks {
+    color: #000;
+}
+.copyRightLinks:hover {
+    color:#57b568;
+    text-decoration: underline;
+}
+.topArrow {
+    width: 60px;
+    height: 50px;
+    background-color: #57b568;
+    position: fixed;
+    right: 0;
+    bottom: 10%;
+    opacity: 0.7;
+    animation: move 1s ease;
+}
+.topArrow:hover {
+    opacity: 1;
+}
+.topArr {
+    color: #fff;
+    width: 25px;
+    height: 25px;
+    margin: auto;
+    margin-top: 10px;
+    
+}
+@keyframes move {
+    0% {
+        height: 50px;
+    }
+
+    50% {
+        height: 30px;
+    }
+    100% {
+        height: 50px;
+    }
+}
+.arrowShowHidden {
+    rotate: 90deg;
+    background-color: #fff;
+}
+.hiddenLinks {
+    color:#80807f;
+    height: max-content;
+    text-align: center;
+    margin: 20px;
+    position: relative;
+}

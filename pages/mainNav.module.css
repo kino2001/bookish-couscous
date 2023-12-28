@@ -1,0 +1,374 @@
+
+.navContainer {
+    position: fixed;
+    top: 0;
+    z-index: 1;
+}
+.startedPagePoint {
+    height: 150px;
+}
+.greenNav {
+    width: 100%;
+    background-color: #57b568;
+}
+.navSearch {
+    width: 60%;
+    height: 45px;
+    padding-left: 25px;
+    font-size: 15px;
+    border: 1px solid white;
+    background-color: #fff;
+}
+.navSearch input {
+    width: 100%;
+    color:#80807f;
+}
+.navSearch input:focus {
+    border: 0;
+    outline: none;
+}
+.searchIcon {
+    color:#57b568;
+    width: 20px;
+    height: 25px;
+    margin-right: 10px;
+}
+.nav {
+    width: 70%;
+    height: 100px;
+    margin: auto;
+    color: white;
+    
+}
+.img {
+    width: 30px;
+    height:30px;
+}
+
+.profIcon {
+    font-size: 32px;
+}
+.wishIcon {
+    margin-top: 15px;
+}
+.cartIconNav {
+    font-size: 30px;
+    margin-top: 22px;
+}
+.respNav {
+    font-size: 40px;
+    /* margin-top: 25px; */
+}
+.cartCounter {
+    text-align: center;
+    font-size: 15px;
+    border-radius: 50%;
+    color: white;
+    padding: 0 3px;
+    font-size: 15px;
+    background-color: red;
+    position: relative;
+    bottom: 15px;
+    right: -10px;
+    opacity: 0.9;
+}
+.wishlistCounter {
+    width: 15px;
+    height: 18px;
+    text-align: center;
+    font-size: 15px;
+    border-radius: 50%;
+    padding-bottom: 5px;
+    color: white;
+    font-size: 15px;
+    background-color: red;
+    position: relative;
+    bottom: 13px;
+    right: -18px;
+    opacity: 0.9;
+}
+/* .icon {
+    margin-top: 25px;
+} */
+.profIcon:hover {
+    background-color: #4fa75f;
+}
+.cartIconNav:hover {
+    background-color: #4fa75f;
+}
+.userIcon:hover {
+    background-color: #4fa75f;
+}
+.subNavContainer {
+    width: 100vw;
+    box-shadow: 2px 2px 7px lightgray;
+    background-color: white;
+}
+.subNav {
+    width: 80%;
+    height: 65px;
+    margin: auto;
+}
+.subNav li {
+    width: max-content;
+    font-size: 15px;
+    padding: 20px 20px 0;
+    box-sizing: border-box;
+    color: #80807f;
+    font-family: Arial, Helvetica, sans-serif;
+    list-style: none;
+}
+.subNav li:hover {
+    background-color: #57b568;
+    text-decoration: underline;
+    color: white;
+}
+.userControl {
+    width: 200px;
+    height: 200px;
+    background-color: #fff;
+    box-shadow: 0 7px 15px rgba(0, 0, 0, .15);
+    position: absolute;
+    top: 70px;
+    right: 20%;
+    color: #80807f;
+    animation: moving 1s;
+}
+/* .userControl.active {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+    transition: var(--speed)ease;
+}
+.userControl.inactive {
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-20px);
+    transition: var(--speed)ease;
+} */
+@keyframes moving {
+    from {
+        top: 100px;
+        opacity: 0;
+    }
+
+    to {
+        top: 70px;
+        opacity: 1;
+    }
+}
+.dropDown {
+    width: 80%;
+    background-color: #fff;
+    height: 40px;
+    padding-left: 5px;
+    font-family: Arial, Helvetica, sans-serif;
+    appearance: none;
+    border: 0px;
+    outline: 0px;
+    margin-top: 10px;
+}
+.userSetting {
+    width: 100%;
+    height: 110px;
+    background-color: #f6f6f6;
+    text-align: center;
+}
+.userLog ul li {
+    width: 80%;
+    line-height: 40px;
+    font-size: 15px;
+    margin:auto;
+}
+.logLink {
+    color:#333;
+}
+.userLog ul li:hover {
+    .logLink {
+        color: #57b568;
+        text-decoration: underline;
+    }
+    
+}
+.userLogIcon {
+    margin-top: 12px;
+    margin-right: 8px;
+    float: left;
+}
+.emptyCart {
+    text-align: center;
+    padding: 15px;
+    width: 400px;
+    height: 60px;
+    position: absolute;
+    top : 70px;
+    right: 15%;
+    background-color: #fff;
+    color: #80807f;
+    box-shadow: 0 7px 15px rgba(0, 0, 0, .15);
+    animation: movingMessage 1s;
+}
+@keyframes movingMessage {
+    from {
+        top: 100px;
+        opacity: 0;
+    }
+
+    to {
+        top: 70px;
+        opacity: 1;
+    }
+}
+.cartSummery {
+    width: 420px;
+    position: absolute;
+    top: 70px;
+    right: 14%;
+    box-shadow: 0 7px 15px rgba(0, 0, 0, .15);
+    animation: movingMessage 1s;
+}
+.quantity {
+    width: 100%;
+    text-align: center;
+    color:#80807f;
+    padding: 15px 0;
+    background-color: #fff;
+}
+.details {
+    display: flex;
+    justify-content: space-between;
+    background-color: #f6f6f6;
+    padding: 15px;
+}
+.totalPrice {
+    background-color: white;
+    padding: 20px;
+}
+.price {
+    display: grid;
+    grid-template-columns: auto auto;
+    justify-content: space-between;
+}
+.cartBtn {
+    display: grid;
+    grid-template-columns: auto auto;
+    justify-content: space-between;
+    padding-top: 15px;
+}
+.cartBtn button {
+    width: 48%;
+    height: 50px;
+    
+}
+.cartIcon {
+    float: left;
+    width: 23px;
+    height: 23px;
+}
+.goToCartBtn {
+    background-color: #57b568;
+    color: white;
+    padding-left: 20px;
+    background: linear-gradient(#57b568, #57b568 50%, #fff 50%, #fff);
+    background-size: 100% 200%;
+    transition: background 0.5s;
+}
+.goToCartBtn:hover {
+    background-position: 100% 100%;
+    color: #57b568;
+}
+.checkoutBtn {
+    color: #57b568;
+    background: linear-gradient(#fff, #fff 50%, #57b568 50%, #57b568);
+    background-size: 100% 200%;
+    transition: background 0.5s;
+}
+.checkoutBtn:hover {
+    background-position: 100% 100%;
+    color: #fff;
+}
+.subTotalPrice {
+    color:#57b568;
+    font-size: 20px;
+}
+.subTotal {
+    color:#80807f;
+    font-size: 20px;
+}
+.productName {
+    color: #333;
+}
+.productName:hover {
+    color:darkblue;
+    text-decoration: underline;
+}
+.productDiscription {
+    color: #80807f;
+}
+.respNavHidden {
+    height: 100%;
+    width: 320px;
+    background-color: #f6f6f6;
+    position: fixed;
+    top:0;
+    animation: showNav 1s ease;
+}
+.respNavHidden nav {
+    background-color: #fff;
+    line-height: 50px;
+    padding-left: 15px;
+    display: block;
+    
+}
+@keyframes showNav {
+    from {
+        left: -320px;
+    }
+
+    to {
+        left: 0;
+    }
+}
+.respNavHidden nav li {
+    list-style: none;
+    color:#80807f;
+}
+.closeHeader {
+    background-color: #57b568;
+    width: 100%;
+    height: 60px;
+}
+.closeHeader span {
+    width: 28px;
+    height: 28px;
+    color: #fff;
+    font-size: 20px;
+    background: rgba(0, 0, 0, 0.1);
+    position:relative;
+    left: 90%;
+    top: 25%;
+}
+.hiddenSearch {
+    background-color: #4fa75f;
+    color:white;
+    height: 40px;
+    width: 100vw;
+    box-sizing: border-box;
+}
+.hiddenSearch input {
+        background-color: #4fa75f;
+        width: 70%;
+        margin-left: 30px;
+}
+.hiddenSearch input::placeholder {
+    color:#fff;
+}
+.hiddenSearch input:focus {
+    border: 0;
+    outline: none;
+}
+.hiddenSearchBtn {
+    font-size: 20px;
+    margin-top: 10px;
+    margin-right: 50px;
+}

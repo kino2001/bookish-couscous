@@ -1,0 +1,99 @@
+.contain {
+    text-align: center;
+    margin-top: 100px;
+}
+.mainContainer {
+    margin-top: 30px;
+}
+.loginContainer {
+    background-color: #f6f6f6;
+    position: relative;
+}
+.signupContainer {
+    background-color: #f6f6f6;
+    position: relative;
+}
+.LoginHeader {
+    border-bottom: 1px solid #f6f6f6;
+    font-size: 30px;
+    color: rgba(71, 70, 70, 0.956);
+}
+.border {
+    border-bottom: 1px solid rgba(214, 214, 214, 0.329);
+    margin: 15px;
+    padding-bottom: 15px;
+    color: rgba(71, 70, 70, 0.956);
+}
+.borderInput {
+    border-bottom: 1px solid rgba(214, 214, 214, 0.329);
+    margin:  0 25px 10px;
+    padding-bottom: 15px;
+    color: rgba(71, 70, 70, 0.576);
+    font-size: 15px;
+   
+}
+.signupDesc {
+    height: 115px;
+    border-bottom: 1px solid rgba(214, 214, 214, 0.329);
+    color: rgba(71, 70, 70, 0.576);
+    font-size: 15px;
+    line-height: 35px;
+    margin-top: 30px;
+    padding-bottom: 40px;
+    width: 95%;
+    margin: auto;
+}
+.input {
+    width: 60%;
+    height: 35px;
+}
+.input:focus {
+    border: 0;
+    outline: none;
+}
+.check {
+    margin-right: 10px;
+    cursor: pointer;
+    width: 15px;
+    height: 15px;
+}
+.checkmark {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 25px;
+    width: 25px;
+    background-color: #eee;
+}
+.chec:checked {
+    background-color: #57b568;
+}
+.space {
+    height:45px;
+    margin-bottom: 10px;
+}
+.forgetPass {
+    color: #57b568;
+}
+.Btn {
+    background-color:#57b568;
+    width: 140px;
+    height: 45px;
+    color: white;
+    margin-bottom: 15px;
+}
+.aboutRegister {
+    width: 100%;
+    background-color: #f6f6f6;
+    margin-top: 40px;
+    padding-top: 10px;
+}
+.aboutDesc {
+    color: rgba(71, 70, 70, 0.576);
+    font-size: 15px;
+    padding-bottom: 20px;
+}
+.errors {
+    font-size: 13px;
+    color: lightcoral;
+}
