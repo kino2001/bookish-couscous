@@ -14,6 +14,8 @@ RUN npm run build
 
 FROM nginx:1.25.3-alpine as production
 
+# pm2 and proxy in middle
+
 ENV NODE_ENV production
 
 RUN rm -rf /usr/share/nginx/html/*
