@@ -1,0 +1,16 @@
+variables:
+  Prefix: "$(Environment.Prefix)"
+  ServiceName: "prisma"
+  AppName: "$(ServiceName)-ui"
+  DeployedAppName: "$(Prefix)$(AppName)"
+  AppFolder: 'prisma-ui'
+  ContainerRegistery: "$(ACR.Endpoint)"
+  AKSCluster: "$(AKS.Name)"
+  LocaleDbName: '$(Environment.Prefix)locale'
+  LocaleApiBaseUrl: "http://locale-api"
+  ImageRepository: $(ContainerRegistery)/$(AppName)
+  PrefixRegex: "ui.prisma"
+  AppProjectName: "prisma-ui"
+  DatabaseServerName: $(Database.SqlServer.Name)
+  DatabaseLogin: $(Database.Login)
+  DatabasePassword: $(Database.Login.Password)

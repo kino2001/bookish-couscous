@@ -1,0 +1,15 @@
+    parameters:
+      configuration: 'Release'
+
+    jobs:
+    - job:
+      pool:
+        vmImage: 'ubuntu-latest'
+
+      variables:
+      - template: vars.yml
+
+      steps:
+      - publish: "$(Build.SourcesDirectory)/azure-ci-cd/scripts"
+        displayName: 'Publish Scripts'
+        artifact: scripts

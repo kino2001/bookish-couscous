@@ -1,0 +1,28 @@
+jobs:
+  - job: JsExtractTranslations
+    displayName: Js Extract Translations
+    pool:
+      vmImage: 'ubuntu-latest'
+    variables:
+      - template: vars.yml
+
+    steps:
+      - checkout: self
+        path: 'app'
+      - checkout: git://CloudCommerce/dev-tools-web
+        displayName: 'Checkout tools repo'
+        path: 'web-tools'
+        
+      - task: DotNetCoreCLI@2
+        displayName: 'Run translation extractor tool'
+        inputs:
+          command: 'run'
+          projects: "$(Pipeline.Workspace)/web-tools/tools/js-localization-extractor/Js-Localization-Extractor.csproj"
+          arguments: '$(PrefixRegex) $(Pipeline.Workspace)/app/src $(Build.ArtifactStagingDirectory)/translations.sql'
+
+      - task: PublishBuildArtifacts@1
+        displayName: 'Publish Translations Artifact'
+        inputs:
+          PathtoPublish: '$(Build.ArtifactStagingDirectory)'
+          ArtifactName: 'translations'
+          publishLocation: 'Container'

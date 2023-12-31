@@ -1,0 +1,89 @@
+parameters:
+  environment: ''
+  connection: ''
+
+jobs:
+- deployment:
+  displayName: 'Deploy'
+  environment: ${{ parameters.environment }}
+  pool:
+    vmImage: 'ubuntu-latest'
+
+  variables:
+  - template: vars.yml
+
+  strategy:
+    runOnce:
+      deploy:
+        steps:
+        - download: current
+        - checkout: self
+        - task: AzureCLI@2
+          displayName: Login to ACR
+          inputs:
+            azureSubscription: ${{ parameters.connection }}
+            scriptType: pscore
+            addSpnToEnvironment: true
+            scriptLocation: inlineScript
+            inlineScript: |
+              az acr login --name $(ContainerRegistery)
+              # store service principal id and key for later use
+              echo "##vso[task.setvariable variable=SpId;isoutput=true; issecret=true]$env:servicePrincipalId"
+              echo "##vso[task.setvariable variable=SpKey;isoutput=true; issecret=true]$env:servicePrincipalKey"
+        - task: Docker@2
+          displayName: Build docker image
+          inputs:
+            repository: "$(AppName)"
+            command: build
+            Dockerfile: $(Build.SourcesDirectory)/Dockerfile
+            arguments: '--build-arg API_HOST=$(Kube.Services.Host) --build-arg DNS_HOST=$(Prisma.UI.DnsHost)'
+            buildContext: $(Build.SourcesDirectory)
+            tags: $(Prefix)
+            
+        - task: AzureCLI@2
+          displayName: Push image to ACR
+          inputs:
+            azureSubscription: ${{ parameters.connection }}
+            scriptType: pscore
+            addSpnToEnvironment: true
+            scriptLocation: inlineScript
+            inlineScript: |
+              docker tag $(AppName):$(Prefix) $(ImageRepository):$(Prefix)$(Build.BuildNumber)
+              docker push $(ImageRepository):$(Prefix)$(Build.BuildNumber)
+
+        - task: UseDotNet@2
+          displayName: 'Use .net 7.x'
+          inputs:
+            version: '7.x'
+            includePreviewVersions: false
+
+        - bash: "sqlcmd -S $(DatabaseServerName).database.windows.net,1433  -U $(DatabaseLogin) -P $(DatabasePassword) -d $(LocaleDbName) -i $(Pipeline.Workspace)/translations/translations.sql"
+          displayName: Update service translations
+
+
+        - bash: |
+            envsubst < "$(Pipeline.Workspace)/scripts/ui/values.deploy.yaml" > "$(Pipeline.Workspace)/scripts/ui/values.deploy.yaml.tmp"
+            mv "$(Pipeline.Workspace)/scripts/ui/values.deploy.yaml.tmp" "$(Pipeline.Workspace)/scripts/ui/values.deploy.yaml"
+            cat "$(Pipeline.Workspace)/scripts/ui/values.deploy.yaml"
+          displayName: Prepare deployment values
+          env:
+            AppName: $(AppName)
+            Repository: $(ImageRepository)
+            ImageTag: $(Prefix)$(Build.BuildNumber)
+            Host: $(Prisma.UI.Domain)
+
+
+        # HELM DEPLOY
+        - task: HelmDeploy@0
+          displayName: "Deploy To AKS"
+          inputs:
+            azureSubscription: ${{ parameters.connection }}
+            azureResourceGroup: "$(ResourceGroup.Name)"
+            kubernetesCluster: "$(AKSCluster)"
+            useClusterAdmin: true
+            command: upgrade
+            chartType: Path
+            chartPath: $(Pipeline.Workspace)/scripts/ui/
+            namespace: ui
+            releaseName: "$(AppName)"
+            arguments: '-f "$(Pipeline.Workspace)/scripts/ui/values.yaml" -f "$(Pipeline.Workspace)/scripts/ui/values.deploy.yaml" --create-namespace --install'

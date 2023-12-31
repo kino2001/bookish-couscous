@@ -1,0 +1,33 @@
+trigger:
+  branches:
+    include:
+    - feature/ci-cd
+    - master
+
+stages:
+- stage: Build
+  displayName: Build And Test App
+  jobs:
+  - template: build.yml
+  variables:
+    - group: Resources
+# TODO: w
+- stage: JsExtractTranslations
+  displayName: Js Extract Translations
+  jobs:
+    - template: Js-translation-extractor.yml
+
+- stage: DEV
+  dependsOn: 
+    - Build
+    - JsExtractTranslations
+  displayName: DEV Deployment
+  variables:
+    - group: Resources
+    - group: DEV
+  jobs:
+  - template: deploy.yml
+    parameters:
+      environment: DEV
+      connection: DevResourcesConnection
+  
